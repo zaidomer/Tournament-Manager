@@ -1,0 +1,55 @@
+class Player<T>{
+    
+    // Declare Variables
+    private int poitns;
+    private int goals = 0;
+    private int assists = 0;
+    private Node<T> left;
+    private Node<T> right;
+    
+    public Player(){
+        points = goals + assists;
+        this.left = null;
+        this.right = null;
+    }
+    
+    // Getters
+    public Node<T> getLeft(){
+        return left;
+    }
+
+    public Node<T> getRight(){
+        return right;
+    }
+
+    public int getGoals(){
+        return goals;
+    }
+    
+    public int getAssists(){
+        return assists;
+    }
+    
+    public int getPoints(){
+        points = goals + assists;
+        return points;
+    }
+    
+    // Setters
+    public void setLeft(Node<T> leftItem){
+        this.left = leftItem;
+    }
+
+    public void setRight(Node<T> rightItem){
+        this.right = rightItem;
+    }
+
+    public void setGoals(int goals){
+        this.goals = goals;
+    }
+    
+    public void setAssists(int assists){
+        this.assists = assists
+    }
+    
+}
