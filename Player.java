@@ -28,6 +28,10 @@ class Player{
         points = goals + assists;
         return points;
     }
+
+    public String getName(){
+        return name;
+    }
     
     // Setters
     public void setGoals(int goals){
@@ -36,6 +40,10 @@ class Player{
     
     public void setAssists(int assists){
         this.assists = assists;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
     
 }
