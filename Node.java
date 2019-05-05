@@ -13,6 +13,7 @@ class Node<T>{
 
     public Node(T item) {
         this.item = item;
+        this.nodeName = nodeName;
         this.right = null;
         this.left = null;
     }
