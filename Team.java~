@@ -1,7 +1,0 @@
-class Team {
-    private String teamName;
-    
-    Team(String teamName){
-        this.teamName = teamName;
-    }
-}
