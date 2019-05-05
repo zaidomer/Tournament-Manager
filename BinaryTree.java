@@ -1,28 +1,33 @@
 class BinaryTree<T extends Comparable<T>>{
     private Node<T> root;
-
+    
     BinaryTree(){
-        root = null;
+        root = new Node<T>(null, null);
     }
+    
     public void add(Node<T> nodeToAdd){
         boolean nodePlaced = false;
-        Node<T> tempNode = root;
-        while(nodePlaced == false){
-            if(root == null){
-                root = nodeToAdd;
-            }else{
+        
+        if(root.getItem() == null){
+            root = nodeToAdd;
+            nodePlaced = true;
+        }else{
+            Node<T> tempNode = root;
+            Node<T> parentNode;
+            while(nodePlaced == false){
+                parentNode = tempNode;
                 if((nodeToAdd.getItem()).compareTo(tempNode.getItem()) >= 0){
-                    if(tempNode.getRight() == null){
-                        tempNode.setRight(nodeToAdd);
+                    tempNode = tempNode.getRight();
+                    if(tempNode == null){
+                        parentNode.setRight(nodeToAdd);
                         nodePlaced = true;
                     }
-                    tempNode.setRight(tempNode.getRight());
                 }else{
-                    if(tempNode.getLeft() == null){
-                        tempNode.setLeft(nodeToAdd);
+                    tempNode = tempNode.getLeft();
+                    if(tempNode == null){
+                        parentNode.setLeft(nodeToAdd);
                         nodePlaced = true;
                     }
-                    tempNode.setLeft(tempNode.getLeft());
                 }
             }
         }
@@ -51,16 +56,18 @@ class BinaryTree<T extends Comparable<T>>{
             return 1 + size(root.getRight());
         }else if(root.getLeft() != null){
             return 1 + size(root.getLeft());
+        }else if(root.getItem() != null){
+            return 1;
         }else{
             return 0;
         }
     }
-
+    
     //Getters
     public Node<T> getRoot(){
         return root;
     }
-
+    
     //Setters
     public void setRoot(Node<T> root){
         this.root = root;

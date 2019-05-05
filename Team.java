@@ -4,6 +4,7 @@ class Team{
 
     Team(String teamName){
         this.teamName = teamName;
+        playerList = new BinaryTree<Integer>();
     }
 
     // Getters
