@@ -45,7 +45,12 @@ class BinaryTree<T extends Comparable<T>>{
         }
     }
     
-    public void contains(){
+    public void contains(T item){
+        Node<T> tempNode = root;
+        boolean itemFound = false;
+        while(itemFound == false){
+            
+        }
         
     }
     

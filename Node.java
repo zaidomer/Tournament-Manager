@@ -11,6 +11,12 @@ class Node<T>{
         this.left = null;
     }
 
+    public Node(T item) {
+        this.item = item;
+        this.right = null;
+        this.left = null;
+    }
+
     // Getters
     public Node<T> getLeft(){
         return this.left;

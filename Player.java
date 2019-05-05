@@ -10,7 +10,7 @@ class Player{
     private int assists = 0;
     private String name;
     
-    public Player(String name){
+    public Player(String name, int goals, int assists){
         this.name = name;
         points = goals + assists;
     }
