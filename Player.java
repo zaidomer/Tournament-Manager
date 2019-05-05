@@ -54,13 +54,15 @@ class Player{
 
     //Save Player
     public void save()throws Exception{
-        File outputFile = new File("PlayerData/" + name.replaceAll(" ", "") + ".txt");
+        File outputFile = new File("PlayerData/" + name.replaceAll(" ", "") + ".xml");
         PrintWriter printOut = new PrintWriter(outputFile);
-        printOut.println(name);
-        printOut.println("Team: " + team);
-        printOut.println("Goals: " + goals);
-        printOut.println("Assists: " + assists);
-        printOut.println("Points: " + points);
+        printOut.println("<player>");
+        printOut.println("<name>" + name + "</name>");
+        printOut.println("<team>" + team + "</team>");
+        printOut.println("<goals>" + goals + "</goals>");
+        printOut.println("<assists>" + assists + "</assists>");
+        printOut.println("<points>" + points + "</points>");
+        printOut.println("</player>");
         printOut.close();
     }
     
