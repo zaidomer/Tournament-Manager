@@ -1,3 +1,5 @@
+import java.io.*;
+
 class Team{
     private String teamName;
     private BinaryTree<Integer> playerList;
@@ -23,6 +25,21 @@ class Team{
 
     public void setPlayerList(BinaryTree<Integer> playerList){
         this.playerList = playerList;
+    }
+    
+     //Save Team
+    public void save()throws Exception{
+        File outputFile = new File("TeamData/" + teamName.replaceAll(" ", "") + ".txt");
+        PrintWriter printOut = new PrintWriter(outputFile);
+        printOut.println(teamName);
+        printOut.close();
+    }
+    
+    public void saveFileReference()throws Exception{
+        File outputFile = new File("AllTeams.txt");
+        PrintWriter printOut = new PrintWriter(new FileWriter(outputFile, true));
+        printOut.println(teamName);
+        printOut.close();
     }
 
 }

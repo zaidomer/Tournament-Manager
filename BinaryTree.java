@@ -1,31 +1,31 @@
 class BinaryTree<T extends Comparable<T>>{
-    private Node<T> root;
+    private BinaryTreeNode<T> root;
     
     BinaryTree(){
-        root = new Node<T>(null, null);
+        root = new BinaryTreeNode<T>(null, null);
     }
     
-    public void add(Node<T> nodeToAdd){
+    public void add(BinaryTreeNode<T> nodeToAdd){
         boolean nodePlaced = false;
         
         if(root.getItem() == null){
             root = nodeToAdd;
             nodePlaced = true;
         }else{
-            Node<T> tempNode = root;
-            Node<T> parentNode;
+            BinaryTreeNode<T> tempBinaryTreeNode = root;
+            BinaryTreeNode<T> parentBinaryTreeNode;
             while(nodePlaced == false){
-                parentNode = tempNode;
-                if((nodeToAdd.getItem()).compareTo(tempNode.getItem()) >= 0){
-                    tempNode = tempNode.getRight();
-                    if(tempNode == null){
-                        parentNode.setRight(nodeToAdd);
+                parentBinaryTreeNode = tempBinaryTreeNode;
+                if((nodeToAdd.getItem()).compareTo(tempBinaryTreeNode.getItem()) >= 0){
+                    tempBinaryTreeNode = tempBinaryTreeNode.getRight();
+                    if(tempBinaryTreeNode == null){
+                        parentBinaryTreeNode.setRight(nodeToAdd);
                         nodePlaced = true;
                     }
                 }else{
-                    tempNode = tempNode.getLeft();
-                    if(tempNode == null){
-                        parentNode.setLeft(nodeToAdd);
+                    tempBinaryTreeNode = tempBinaryTreeNode.getLeft();
+                    if(tempBinaryTreeNode == null){
+                        parentBinaryTreeNode.setLeft(nodeToAdd);
                         nodePlaced = true;
                     }
                 }
@@ -37,7 +37,7 @@ class BinaryTree<T extends Comparable<T>>{
         
     }
     
-    public boolean isEmpty(Node<T> node){
+    public boolean isEmpty(BinaryTreeNode<T> node){
         if(node == null){
             return true;
         }else{
@@ -46,7 +46,7 @@ class BinaryTree<T extends Comparable<T>>{
     }
     
     public void contains(T item){
-        Node<T> tempNode = root;
+        BinaryTreeNode<T> tempBinaryTreeNode = root;
         boolean itemFound = false;
         while(itemFound == false){
             
@@ -54,7 +54,7 @@ class BinaryTree<T extends Comparable<T>>{
         
     }
     
-    public int size(Node<T> root){
+    public int size(BinaryTreeNode<T> root){
         if((root.getRight() != null) && (root.getLeft() != null)){
             return 2 + size(root.getRight()) + size(root.getLeft());
         }else if(root.getRight() != null){
@@ -69,12 +69,12 @@ class BinaryTree<T extends Comparable<T>>{
     }
     
     //Getters
-    public Node<T> getRoot(){
+    public BinaryTreeNode<T> getRoot(){
         return root;
     }
     
     //Setters
-    public void setRoot(Node<T> root){
+    public void setRoot(BinaryTreeNode<T> root){
         this.root = root;
     }
 }

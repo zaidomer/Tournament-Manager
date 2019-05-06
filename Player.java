@@ -1,7 +1,6 @@
 /**
  * Auto Generated Java Class.
  */
-import java.util.Scanner;
 import java.io.*;
 
 class Player{
@@ -54,15 +53,20 @@ class Player{
 
     //Save Player
     public void save()throws Exception{
-        File outputFile = new File("PlayerData/" + name.replaceAll(" ", "") + ".xml");
+        File outputFile = new File("PlayerData/" + name.replaceAll(" ", "") + ".txt");
         PrintWriter printOut = new PrintWriter(outputFile);
-        printOut.println("<player>");
-        printOut.println("<name>" + name + "</name>");
-        printOut.println("<team>" + team + "</team>");
-        printOut.println("<goals>" + goals + "</goals>");
-        printOut.println("<assists>" + assists + "</assists>");
-        printOut.println("<points>" + points + "</points>");
-        printOut.println("</player>");
+        printOut.println( name);
+        printOut.println(team);
+        printOut.println(goals);
+        printOut.println(assists);
+        printOut.println(points);
+        printOut.close();
+    }
+    
+    public void saveFileReference()throws Exception{
+        File outputFile = new File("AllPlayers.txt");
+        PrintWriter printOut = new PrintWriter(new FileWriter(outputFile, true));
+        printOut.println(name);
         printOut.close();
     }
     

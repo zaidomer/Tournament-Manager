@@ -19,14 +19,19 @@ public class TournamentManager {
             System.out.println("Enter 5 To Find A Player");
             System.out.println("Enter 7 To Exit");
             int userChoice = input.nextInt();
+            DataLoader loadData = new DataLoader();
+            loadData.loadPlayers();
             if(userChoice == 1){
                 System.out.print("Team Name: ");
                 input.nextLine();
                 String teamName = input.nextLine();
-                league.add(new Team(teamName));
+                Team teamToAdd = new Team(teamName);
+                league.add(teamToAdd);
                 System.out.println(teamName + " has been added to the league!");
+                teamToAdd.save();
+                teamToAdd.saveFileReference();
+                System.out.println("Team has been saved");
                 System.out.println();
-                teamName = null;
             } else if(userChoice == 2){
                 if(league.size() > 0){
 
@@ -49,15 +54,15 @@ public class TournamentManager {
                     Player playerToAdd = new Player(playerName, goals, assists, teamForPlayer);
                     for(int i = 0; i < league.size(); i++){
                         if(((league.get(i)).getTeamName()).equals(teamForPlayer)){
-                            Node<Integer> playerNode = new Node<Integer>(playerToAdd.getPoints(), playerToAdd.getName());
+                            BinaryTreeNode<Integer> playerBinaryTreeNode = new BinaryTreeNode<Integer>(playerToAdd.getPoints(), playerToAdd.getName());
                             if((league.get(i)).getPlayerList() != null){
                                 BinaryTree<Integer> tempTree = (league.get(i)).getPlayerList();
-                                tempTree.add(playerNode);
+                                tempTree.add(playerBinaryTreeNode);
                                 (league.get(i)).setPlayerList(tempTree);
                                 playerAdded = true;
                             }else{
                                 BinaryTree<Integer> tempTree = new BinaryTree<Integer>();
-                                tempTree.add(playerNode);
+                                tempTree.add(playerBinaryTreeNode);
                                 league.get(i).setPlayerList(tempTree);
                                 playerAdded = true;
                             }
@@ -68,13 +73,14 @@ public class TournamentManager {
                         System.out.println("Team \"" + teamForPlayer + "\" not found. Check team name and try again");
                     }else{
                         playerToAdd.save();
+                        playerToAdd.saveFileReference();
                         System.out.println("Player has been saved");
                     }
                     
                 }else{
                     System.out.println("There must be a team before you can add a player");
                 }
-                
+                System.out.println();
             }else if(userChoice == 3){
                 input.nextLine();
                 boolean sizeDisplayed = false;

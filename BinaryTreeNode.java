@@ -1,17 +1,17 @@
-class Node<T>{
+class BinaryTreeNode<T>{
     private T item;
     private String nodeName;
-    private Node<T> left;
-    private Node<T> right;
+    private BinaryTreeNode<T> left;
+    private BinaryTreeNode<T> right;
 
-    public Node(T item, String nodeName) {
+    public BinaryTreeNode(T item, String nodeName) {
         this.item = item;
         this.nodeName = nodeName;
         this.right = null;
         this.left = null;
     }
 
-    public Node(T item) {
+    public BinaryTreeNode(T item) {
         this.item = item;
         this.nodeName = nodeName;
         this.right = null;
@@ -19,11 +19,11 @@ class Node<T>{
     }
 
     // Getters
-    public Node<T> getLeft(){
+    public BinaryTreeNode<T> getLeft(){
         return this.left;
     }
 
-    public Node<T> getRight(){
+    public BinaryTreeNode<T> getRight(){
         return this.right;
     }
 
@@ -31,16 +31,16 @@ class Node<T>{
         return this.item;
     }
 
-    public String getNodeName(){
+    public String getBinaryTreeNodeName(){
         return this.nodeName;
     }
 
     // Setters
-    public void setLeft(Node<T> leftItem){
+    public void setLeft(BinaryTreeNode<T> leftItem){
         this.left = leftItem;
     }
 
-    public void setRight(Node<T> rightItem){
+    public void setRight(BinaryTreeNode<T> rightItem){
         this.right = rightItem;
     }
 
@@ -48,14 +48,14 @@ class Node<T>{
         this.item = item;
     }
 
-    public void setNode(Node<T> node){
+    public void setBinaryTreeNode(BinaryTreeNode<T> node){
         this.item = node.getItem();
-        this.nodeName = node.getNodeName();
+        this.nodeName = node.getBinaryTreeNodeName();
         this.right = node.getRight();
         this.left = node.getLeft();
     }
 
-    public void setNodeName(String nodeName){
+    public void setBinaryTreeNodeName(String nodeName){
         this.nodeName = nodeName;
     }
 
