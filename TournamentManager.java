@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+
 /**
  * Auto Generated Java Class.
  */
@@ -11,6 +12,14 @@ public class TournamentManager {
         //Create League
         ArrayList<Team> league = new ArrayList<Team>();
 
+        //Load previous Information
+        DataLoader loadData = new DataLoader();
+        Player allPlayers[] = loadData.loadPlayers();
+        
+        for(int i = 0; i < allPlayers.length; i++){
+            System.out.println(allPlayers[i].getName());
+        }
+
         while(coninueProgram == true){
             System.out.println("Enter 1 To Make a Team");
             System.out.println("Enter 2 To Add Player to Team");
@@ -19,8 +28,7 @@ public class TournamentManager {
             System.out.println("Enter 5 To Find A Player");
             System.out.println("Enter 7 To Exit");
             int userChoice = input.nextInt();
-            DataLoader loadData = new DataLoader();
-            loadData.loadPlayers();
+            
             if(userChoice == 1){
                 System.out.print("Team Name: ");
                 input.nextLine();

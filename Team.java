@@ -29,9 +29,11 @@ class Team{
     
      //Save Team
     public void save()throws Exception{
-        File outputFile = new File("TeamData/" + teamName.replaceAll(" ", "") + ".txt");
+        File outputFile = new File("TeamData/" + teamName.replaceAll(" ", "") + ".xml");
         PrintWriter printOut = new PrintWriter(outputFile);
-        printOut.println(teamName);
+        printOut.println("<team>");
+        printOut.println("<name>" + teamName + "</name>");
+        printOut.println("</team>");
         printOut.close();
     }
     
