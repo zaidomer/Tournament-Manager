@@ -19,7 +19,6 @@ public class TournamentManager {
         //Load previous players Information
         ArrayList<Player> players = loadData.loadPlayers();
         for(int i = 0; i < players.size(); i++){
-            System.out.println(players.get(i).getName());
             Player playerRetrieved = new Player((players.get(i)).getName(), (players.get(i)).getGoals(), (players.get(i)).getAssists(), (players.get(i)).getTeam());
             BinaryTreeNode<Integer> playerRetrievedNode = new BinaryTreeNode<Integer>(playerRetrieved.getPoints(), playerRetrieved.getName());
             BinaryTree<Integer> retrievedTree = new BinaryTree<Integer>();
@@ -41,6 +40,7 @@ public class TournamentManager {
             System.out.println("Enter 4 To Get The Size Of The League");
             System.out.println("Enter 5 To Find A Player");
             System.out.println("Enter 6 To Remove A Player");
+            System.out.println("Enter 7 To Organize Games");
             System.out.println("Enter 7 To Exit");
             int userChoice = input.nextInt();
             
@@ -105,6 +105,7 @@ public class TournamentManager {
                 for(int i = 0; i < league.size(); i++){
                     if(((league.get(i)).getTeamName()).equals(teamChosen)){
                         System.out.println("There are " + ((league.get(i)).getPlayerList()).size(((league.get(i)).getPlayerList()).getRoot()) + " player(s) on that team");
+                        System.out.println();
                         sizeDisplayed = true;
                     }
                 }
@@ -115,7 +116,28 @@ public class TournamentManager {
             }else if(userChoice == 4){
                 System.out.println("There are " + league.size() + " team(s) in the league");
             }else if(userChoice == 5){
-                
+                System.out.print("Player Name: ");
+                input.nextLine();
+                String playerName = input.nextLine();
+                boolean playerFound = false;
+                Player playerSearched = null;
+                for(int i = 0; i < league.size(); i++){
+                    if(league.get(i).getPlayerList().containsNodeName(playerName, league.get(i).getPlayerList().getRoot())){
+                        playerSearched = loadData.loadIndividualPlayer(playerName);
+                        playerFound = true;
+                    }
+                }
+                if(playerFound == false){
+                    System.out.println("Player \"" + playerName + "\" not found");
+                }else{
+                    System.out.println();
+                    System.out.println("Name: " + playerSearched.getName());
+                    System.out.println("Team: " + playerSearched.getTeam());
+                    System.out.println("Goals: " + playerSearched.getGoals());
+                    System.out.println("Assists: " + playerSearched.getAssists());
+                    System.out.println("Points: " + playerSearched.getPoints());
+                    System.out.println();
+                }
             }else if(userChoice == 6){
                 
             }else if(userChoice == 7){

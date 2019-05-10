@@ -19,40 +19,43 @@ class DataLoader{
     public ArrayList<Player> loadPlayers()throws Exception{
         File file = new java.io.File("AllPlayers.txt"); 
         Scanner input = new Scanner(file);  
-        Player playerFound = null;
         String name;
+        ArrayList<Player> playerList = new ArrayList<Player>();
+        while(input.hasNextLine()){
+            name = input.nextLine();
+            Player playerToAdd = loadIndividualPlayer(name);
+            playerList.add(playerToAdd);
+        }
+        input.close();
+        return playerList;
+    }
+
+    public Player loadIndividualPlayer(String name)throws Exception{
         int count = 0;
-        int indexLength = 0;
-        
         String playerName = "";
         String team = "";
         int goals = 0;
         int assists = 0;
         int points = 0;
-        ArrayList<Player> playerList = new ArrayList<Player>();
-        while(input.hasNextLine()){
-            name = input.nextLine();
-            File playerFile = new java.io.File("PlayerData/" + name.replaceAll(" ", "") +".txt");
-            Scanner readPlayer = new Scanner(playerFile);
-            while(readPlayer.hasNextLine()){
-                if(count == 0){
-                    playerName = readPlayer.nextLine();
-                }else if(count == 1){
-                    team = readPlayer.nextLine();
-                }else if(count == 2){
-                    goals = Integer.parseInt(readPlayer.nextLine());
-                }else if(count == 3){
-                    assists = Integer.parseInt(readPlayer.nextLine());
-                }else if(count == 4){
-                    points = Integer.parseInt(readPlayer.nextLine());
-                }
-                count++;
+
+        File playerFile = new java.io.File("PlayerData/" + name.replaceAll(" ", "") +".txt");
+        Scanner readPlayer = new Scanner(playerFile);
+        while(readPlayer.hasNextLine()){
+            if(count == 0){
+                playerName = readPlayer.nextLine();
+            }else if(count == 1){
+                team = readPlayer.nextLine();
+            }else if(count == 2){
+                goals = Integer.parseInt(readPlayer.nextLine());
+            }else if(count == 3){
+                assists = Integer.parseInt(readPlayer.nextLine());
+            }else if(count == 4){
+                points = Integer.parseInt(readPlayer.nextLine());
             }
-            playerList.add(new Player(playerName, goals, assists, team));
-            readPlayer.close();
-            count = 0;
+            count++;
         }
-        input.close();
-        return playerList;
+        readPlayer.close();
+        return new Player(playerName, goals, assists, team);
+
     }
 }

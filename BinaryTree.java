@@ -45,13 +45,29 @@ class BinaryTree<T extends Comparable<T>>{
         }
     }
     
-    public void contains(T item){
+    public boolean containsItem(T item){
         BinaryTreeNode<T> tempBinaryTreeNode = root;
         boolean itemFound = false;
-        while(itemFound == false){
+        // while(itemFound == false){
             
+        // }
+        return true;
+    }
+
+    public boolean containsNodeName(String nodeName, BinaryTreeNode<T> root){
+        BinaryTreeNode<T> tempBinaryTreeNode = root;
+        boolean itemFound = false;
+        if(root.getBinaryTreeNodeName().equals(nodeName)){
+            return true;
+        }else if((root.getRight() != null) && (root.getLeft() != null)){
+            return containsNodeName(nodeName, root.getRight()) || containsNodeName(nodeName, root.getLeft());
+        }else if(root.getRight() != null){
+            return containsNodeName(nodeName, root.getRight());
+        }else if(root.getLeft() != null){
+            return containsNodeName(nodeName, root.getLeft());
+        }else{
+            return false;
         }
-        
     }
     
     public int size(BinaryTreeNode<T> root){
