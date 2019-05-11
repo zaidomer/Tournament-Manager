@@ -56,6 +56,50 @@ class DataLoader{
         }
         readPlayer.close();
         return new Player(playerName, goals, assists, team);
+    }
 
+    public Queue<Game> loadSchedule(ArrayList<Team> league, boolean display)throws Exception{
+        File file = new java.io.File("AllGames.txt"); 
+        Scanner input = new Scanner(file);  
+        String name;
+        Queue<Game> schedule = new Queue<Game>();
+        while(input.hasNextLine()){
+            name = input.nextLine();
+            Game gameToAdd = loadIndividualGame(name, league, display);
+            QueueNode<Game> gameNode = new QueueNode<Game>(gameToAdd);
+            schedule.enqueue(gameNode);
+        }
+        input.close();
+        return schedule;
+    }   
+
+    public Game loadIndividualGame(String gameName, ArrayList<Team> league, boolean display)throws Exception{
+        int count = 0;
+        String teamOneName = "";
+        String teamTwoName = "";
+        String date = "";
+        Team teamOne = new Team("");
+        Team teamTwo = new Team("");
+        DataFinder findData = new DataFinder();
+
+        File gameFile = new java.io.File("GameData/" + gameName.replaceAll(" ", "") +".txt");
+        Scanner readGame = new Scanner(gameFile);
+        while(readGame.hasNextLine()){
+            if(count == 0){
+                teamOneName = readGame.nextLine();
+                teamOne = findData.findTeam(teamOneName, league);
+            }else if(count == 1){
+                teamTwoName = readGame.nextLine();
+                teamTwo = findData.findTeam(teamTwoName, league);
+            }else if(count == 2){
+                date = readGame.nextLine();
+            }
+            count++;
+        }
+        if(display == true){
+            System.out.println(teamOne.getTeamName() + " vs " + teamTwo.getTeamName() + " " + date);
+        }
+        readGame.close();
+        return new Game(teamOne, teamTwo, date);
     }
 }

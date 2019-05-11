@@ -9,8 +9,10 @@ public class TournamentManager {
         Scanner input = new Scanner(System.in);
         boolean coninueProgram = true;
         
-        //Create League
+        //Create League, Games Schedule, Data Finder
         ArrayList<Team> league = new ArrayList<Team>();
+        Queue<Game> schedule = new Queue<Game>();
+        DataFinder findData = new DataFinder();
         
         //Load previous teams information
         DataLoader loadData = new DataLoader();
@@ -31,6 +33,9 @@ public class TournamentManager {
             }
             retrievedTree = null;
         }
+
+        //Load Schedule
+        schedule = loadData.loadSchedule(league, false);
         
         //Program Loop
         while(coninueProgram == true){
@@ -41,7 +46,10 @@ public class TournamentManager {
             System.out.println("Enter 5 To Find A Player");
             System.out.println("Enter 6 To Remove A Player");
             System.out.println("Enter 7 To Organize Games");
-            System.out.println("Enter 7 To Exit");
+            System.out.println("Enter 8 To Record Game Info");
+            System.out.println("Enter 9 To View Schedule");
+            System.out.println("Enter 10 To View Completed Game Results");
+            System.out.println("Enter 11 To Exit");
             int userChoice = input.nextInt();
             
             if(userChoice == 1){
@@ -141,6 +149,48 @@ public class TournamentManager {
             }else if(userChoice == 6){
                 
             }else if(userChoice == 7){
+                System.out.println();
+                System.out.println("There are currently " + schedule.size() + " games scheduled");
+
+                //Team one
+                System.out.print("Team One: ");
+                input.nextLine();
+                String teamOneName = input.nextLine();
+                Team teamOne = findData.findTeam(teamOneName, league);
+
+                //Team two
+                System.out.print("Team Two: ");
+                String teamTwoName = input.nextLine();
+                Team teamTwo = findData.findTeam(teamTwoName, league);
+
+                //Date
+                System.out.print("Date of Game: ");
+                String date = input.nextLine();
+
+                //Add Game to Schedule
+                if(teamOne.getTeamName() == null || teamTwo.getTeamName() == null){
+                    System.out.println("One or more of the two teams not found. Try again.");
+                }else{
+                    // Create Game Object and Add Save
+                    Game gameToAdd = new Game(teamOne, teamTwo, date);
+                    gameToAdd.save();
+                    gameToAdd.saveFileReference();
+
+                    //Add Game to Schedule with Queue Nodes
+                    QueueNode<Game> gameNode = new QueueNode<Game>(gameToAdd);
+                    schedule.enqueue(gameNode);
+                    System.out.println("Game added to schedule");
+                }
+                System.out.println();
+            }else if(userChoice == 8){
+
+            }else if(userChoice == 9){
+                System.out.println();
+                loadData.loadSchedule(league, true);
+                System.out.println();
+            }else if(userChoice == 10){
+
+            }else if(userChoice == 11){
                 coninueProgram = false;
             }
         }

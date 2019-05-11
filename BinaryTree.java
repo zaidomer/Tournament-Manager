@@ -72,7 +72,7 @@ class BinaryTree<T extends Comparable<T>>{
     
     public int size(BinaryTreeNode<T> root){
         if((root.getRight() != null) && (root.getLeft() != null)){
-            return 2 + size(root.getRight()) + size(root.getLeft());
+            return 1 + size(root.getRight()) + size(root.getLeft());
         }else if(root.getRight() != null){
             return 1 + size(root.getRight());
         }else if(root.getLeft() != null){
