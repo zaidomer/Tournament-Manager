@@ -1,11 +1,4 @@
-Toronto Maple Leafs San Jose Sharks May 20 2019
-San Jose Sharks Vegas Golden Knights May 21 2019
-Washington Capitals Vegas Golden Knights May 22 2019
-Montreal Canadiens Chicago Blackhawks May 25 2019
-Toronto Maple Leafs Montreal Canadiens May 29 2019
-Washington Capitals San Jose Sharks May 30 2019
-Chicago Blackhawks Montreal Canadiens June 1 2019
-Montreal Canadiens Washington Capitals June 3 2019
-Vegas Golden Knights Chicago Blackhawks June 5 2019
-Toronto Maple Leafs Chicago Blackhawks June 6 2019
-Montreal Canadiens San Jose Sharks June 7 2019
+Washington Capitals Chicago Blackhawks June 21 2019
+Toronto Maple Leafs Vegas Golden Knights June 24 2019
+Chicago Blackhawks Vegas Golden Knights June 27 2019
+Toronto Maple Leafs Montreal Canadiens June 30 2019

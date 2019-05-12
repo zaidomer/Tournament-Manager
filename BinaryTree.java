@@ -55,8 +55,6 @@ class BinaryTree<T extends Comparable<T>>{
     }
 
     public boolean containsNodeName(String nodeName, BinaryTreeNode<T> root){
-        BinaryTreeNode<T> tempBinaryTreeNode = root;
-        boolean itemFound = false;
         if(root.getBinaryTreeNodeName().equals(nodeName)){
             return true;
         }else if((root.getRight() != null) && (root.getLeft() != null)){

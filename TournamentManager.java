@@ -184,7 +184,155 @@ public class TournamentManager {
                 System.out.println();
             }else if(userChoice == 8){
 
+                //Input Variables
+                String goalScorerName = "";
+                String assistPlayerName = "";
+                boolean playerFound = false;
+                int numInputAttempts = 0;
+                Player goalScorer;
+                Player assistPlayer;
+
+                System.out.println();
+                Game gameToRecord = schedule.dequeue();
+                System.out.println(gameToRecord.getTeamOne().getTeamName() + " vs " + gameToRecord.getTeamTwo().getTeamName() + " " + gameToRecord.getDate());
+
+                //Team 1
+                System.out.println(gameToRecord.getTeamOne().getTeamName() + " goals: ");
+                int teamOneGoals = input.nextInt();
+                gameToRecord.setTeamOneGoals(teamOneGoals);
+                System.out.println();
+                for(int i = 1; i <= teamOneGoals; i++){
+                    System.out.println("Goal #" + i);
+                    
+                    //Find Goal Scoreer Player
+                    while(playerFound == false){
+                        System.out.print("Goals Scorer: ");
+                        if(numInputAttempts == 0 && i == 1){
+                            input.nextLine();
+                        }
+                        goalScorerName = input.nextLine();
+                        playerFound = ((gameToRecord.getTeamOne()).getPlayerList()).containsNodeName(goalScorerName, gameToRecord.getTeamOne().getPlayerList().getRoot());
+                        if(playerFound == false){
+                            System.out.println("Player Not Found. Try Again");
+                        }
+                        numInputAttempts++;
+                    }
+                    goalScorer = loadData.loadIndividualPlayer(goalScorerName);
+                    goalScorer.setGoals(goalScorer.getGoals() + 1);
+                    goalScorer.setPoints(goalScorer.getPoints());
+                    goalScorer.save();
+
+                    playerFound = false;
+                    numInputAttempts = 0;
+                    goalScorerName = "";
+
+                    //Assists
+                    System.out.println("Number of Players With Assists: ");
+                    int numAssists = input.nextInt();
+                    for(int k = 1; k <= numAssists; k++){
+                        while(playerFound == false){
+                            System.out.print("Assist Player #" + k + ": ");
+                            if(numInputAttempts == 0 && k==1){
+                                input.nextLine();
+                            }
+                            assistPlayerName = input.nextLine();
+                            playerFound = ((gameToRecord.getTeamOne()).getPlayerList()).containsNodeName(assistPlayerName, gameToRecord.getTeamOne().getPlayerList().getRoot());
+                            if(playerFound == false){
+                                System.out.println("Player Not Found. Try Again");
+                            }
+                            numInputAttempts++;
+                        }
+                        assistPlayer = loadData.loadIndividualPlayer(assistPlayerName);
+                        assistPlayer.setAssists(assistPlayer.getAssists() + 1);
+                        assistPlayer.setPoints(assistPlayer.getPoints());
+                        assistPlayer.save();
+
+                        playerFound = false;
+                        numInputAttempts = 0;
+                        assistPlayerName = "";
+
+                        System.out.println();
+                    }
+                }
+
+                //Reset Variables for Team 2
+                goalScorerName = "";
+                assistPlayerName = "";
+                playerFound = false;
+                numInputAttempts = 0;
+
+                //Team 2
+                System.out.print(gameToRecord.getTeamTwo().getTeamName() + " goals: ");
+                int teamTwoGoals = input.nextInt();
+                gameToRecord.setTeamTwoGoals(teamTwoGoals);
+                for(int i = 1; i <= teamTwoGoals; i++){
+                    System.out.println("Goal #" + i);
+                    
+                    //Find Goal Scoreer Player
+                    while(playerFound == false){
+                        System.out.print("Goals Scorer: ");
+                        if(numInputAttempts == 0 && i == 1){
+                            input.nextLine();
+                        }
+                        goalScorerName = input.nextLine();
+                        playerFound = ((gameToRecord.getTeamTwo()).getPlayerList()).containsNodeName(goalScorerName, gameToRecord.getTeamTwo().getPlayerList().getRoot());
+                        if(playerFound == false){
+                            System.out.println("Player Not Found. Try Again");
+                        }
+                        numInputAttempts++;
+                    }
+                    goalScorer = loadData.loadIndividualPlayer(goalScorerName);
+                    goalScorer.setGoals(goalScorer.getGoals() + 1);
+                    goalScorer.setPoints(goalScorer.getPoints());
+                    goalScorer.save();
+
+                    playerFound = false;
+                    numInputAttempts = 0;
+                    goalScorerName = "";
+
+                    //Assists
+                    System.out.println("Number of Players With Assists: ");
+                    int numAssists = input.nextInt();
+                    for(int k = 1; k <= numAssists; k++){
+                        while(playerFound == false){
+                            System.out.print("Assist Player #" + k + ": ");
+                            if(numInputAttempts == 0 && k==1){
+                                input.nextLine();
+                            }
+                            assistPlayerName = input.nextLine();
+                            playerFound = ((gameToRecord.getTeamTwo()).getPlayerList()).containsNodeName(assistPlayerName, gameToRecord.getTeamTwo().getPlayerList().getRoot());
+                            if(playerFound == false){
+                                System.out.println("Player Not Found. Try Again");
+                            }
+                            numInputAttempts++;
+                        }
+                        assistPlayer = loadData.loadIndividualPlayer(assistPlayerName);
+                        assistPlayer.setAssists(assistPlayer.getAssists() + 1);
+                        assistPlayer.setPoints(assistPlayer.getPoints());
+                        assistPlayer.save();
+
+                        playerFound = false;
+                        numInputAttempts = 0;
+                        assistPlayerName = "";
+
+                        System.out.println();
+                    }
+                    
+                }
+
+                //Update Game Object with Data, Delete old Game File
+                gameToRecord.setTeamOneGoals(teamOneGoals);
+                gameToRecord.setTeamTwoGoals(teamTwoGoals);
+                gameToRecord.saveResult();
+                gameToRecord.delete();
+                String gameToDelete = gameToRecord.getTeamOne().getTeamName() + gameToRecord.getTeamTwo().getTeamName() + gameToRecord.getDate();
+                gameToRecord.saveUpdatedSchedule(gameToDelete); 
+                System.out.println("Game inofrmation successfully recorded and saved.");
+                System.out.println();
+
             }else if(userChoice == 9){
+                System.out.println();
+                System.out.println("There are " + schedule.size() + " games scheduled");
                 System.out.println();
                 loadData.loadSchedule(league, true);
                 System.out.println();

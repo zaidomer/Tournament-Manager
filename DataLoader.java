@@ -65,9 +65,11 @@ class DataLoader{
         Queue<Game> schedule = new Queue<Game>();
         while(input.hasNextLine()){
             name = input.nextLine();
-            Game gameToAdd = loadIndividualGame(name, league, display);
-            QueueNode<Game> gameNode = new QueueNode<Game>(gameToAdd);
-            schedule.enqueue(gameNode);
+            if(name.length() > 1){
+                Game gameToAdd = loadIndividualGame(name, league, display);
+                QueueNode<Game> gameNode = new QueueNode<Game>(gameToAdd);
+                schedule.enqueue(gameNode);
+            }
         }
         input.close();
         return schedule;
