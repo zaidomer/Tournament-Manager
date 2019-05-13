@@ -58,16 +58,25 @@ class Game {
         String line;
         while(input.hasNext()){
             line = input.nextLine();
-            if(!input.nextLine().equals(gameToDelete)){
-                newFileContents += input.nextLine();
+            if(!line.equals(gameToDelete)){
+                newFileContents += line;
+                newFileContents = newFileContents + "\n";
             }
         }
+
+        //delete old file and replace with new onw (without the deleted game)
         input.close();
         inFile.delete();
         File outputFile = new File("AllGames.txt");
         PrintWriter printOut = new PrintWriter(outputFile);
         printOut.println(newFileContents);
         printOut.close();
+
+        //Save as completed game
+        File completedFiles = new File("AllCompletedGames.txt");
+        PrintWriter printCompleted = new PrintWriter(new FileWriter(completedFiles, true));
+        printCompleted.println(teamOne.getTeamName() + " vs " + teamTwo.getTeamName() + " " + date + " (" + teamOneGoals + "-" + teamTwoGoals + ")");
+        printCompleted.close();
     }
 
     //Getters

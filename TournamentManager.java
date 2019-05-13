@@ -325,9 +325,9 @@ public class TournamentManager {
                 gameToRecord.setTeamTwoGoals(teamTwoGoals);
                 gameToRecord.saveResult();
                 gameToRecord.delete();
-                String gameToDelete = gameToRecord.getTeamOne().getTeamName() + gameToRecord.getTeamTwo().getTeamName() + gameToRecord.getDate();
+                String gameToDelete = gameToRecord.getTeamOne().getTeamName() + " " + gameToRecord.getTeamTwo().getTeamName() + " " + gameToRecord.getDate();
                 gameToRecord.saveUpdatedSchedule(gameToDelete); 
-                System.out.println("Game inofrmation successfully recorded and saved.");
+                System.out.println("Game information successfully recorded and saved.");
                 System.out.println();
 
             }else if(userChoice == 9){
@@ -337,7 +337,7 @@ public class TournamentManager {
                 loadData.loadSchedule(league, true);
                 System.out.println();
             }else if(userChoice == 10){
-
+                loadData.loadCompletedGames();
             }else if(userChoice == 11){
                 coninueProgram = false;
             }

@@ -104,4 +104,16 @@ class DataLoader{
         readGame.close();
         return new Game(teamOne, teamTwo, date);
     }
+
+    public void loadCompletedGames()throws Exception{
+        File completedGamesFile = new File("AllCompletedGames.txt");
+        Scanner input = new Scanner(completedGamesFile);
+        String game = "";
+        System.out.println();
+        while(input.hasNextLine()){
+            game = input.nextLine();
+            System.out.println(game);
+        }
+        System.out.println();
+    }
 }

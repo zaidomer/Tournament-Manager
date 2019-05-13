@@ -7,7 +7,6 @@ class BinaryTree<T extends Comparable<T>>{
     
     public void add(BinaryTreeNode<T> nodeToAdd){
         boolean nodePlaced = false;
-        
         if(root.getItem() == null){
             root = nodeToAdd;
             nodePlaced = true;
@@ -33,8 +32,73 @@ class BinaryTree<T extends Comparable<T>>{
         }
     }
     
-    public void remove(){
-        
+    public boolean remove(BinaryTreeNode<T> nodeToRemove){
+        BinaryTreeNode<T> tempBinaryTreeNode = root;
+        BinaryTreeNode<T> parentBinaryTreeNode = root;
+        boolean rightChild = false;
+
+        //Search for node
+        while(tempBinaryTreeNode != nodeToRemove){
+            parentBinaryTreeNode = tempBinaryTreeNode;
+
+            //Node not in tree
+            if(root == null){
+                return false;
+            }
+
+            if((nodeToRemove.getItem()).compareTo(tempBinaryTreeNode.getItem()) < 0){
+                tempBinaryTreeNode = tempBinaryTreeNode.getLeft();
+                rightChild = false;
+            }else{
+                tempBinaryTreeNode = tempBinaryTreeNode.getRight();
+                rightChild = true;
+            }
+        }
+
+        //Leaf
+        if(tempBinaryTreeNode.getLeft() == null && tempBinaryTreeNode.getRight() == null){
+            if(tempBinaryTreeNode == root){
+                root = null;
+            }else if(rightChild == true){
+                parentBinaryTreeNode.setRight(null);
+            }else{
+                parentBinaryTreeNode.setLeft(null);
+            }
+        }
+
+        //No right node
+        else if(tempBinaryTreeNode.getRight() == null){
+            if(tempBinaryTreeNode == root){
+                root = tempBinaryTreeNode.getLeft();
+            }else if(rightChild == true){
+                parentBinaryTreeNode.setLeft(tempBinaryTreeNode.getLeft());
+            }else{
+                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getLeft());
+            }
+        }
+
+        //No left node
+        else if(tempBinaryTreeNode.getLeft() == null){
+            if(tempBinaryTreeNode == root){
+                root = tempBinaryTreeNode.getRight();
+            }else if(rightChild == true){
+                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getRight());
+            }else{
+                parentBinaryTreeNode.setLeft(tempBinaryTreeNode.getRight());
+
+            }
+        }
+
+        //Both left and right node are present
+        else{
+            if(rightChild == true){
+                BinaryTreeNode<T> tempLeftNode = tempBinaryTreeNode.getLeft();
+                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getRight());
+                tempLeftNode
+            }
+        }
+        return true;
+
     }
     
     public boolean isEmpty(BinaryTreeNode<T> node){
