@@ -2,6 +2,7 @@
  * Auto Generated Java Class.
  */
 import java.io.*;
+import java.util.Scanner;
 
 class Player{
     
@@ -59,7 +60,7 @@ class Player{
         this.name = name;
     }
 
-    //Save Player
+    //Save and Delete Player
     public void save()throws Exception{
         File outputFile = new File("PlayerData/" + name.replaceAll(" ", "") + ".txt");
         PrintWriter printOut = new PrintWriter(outputFile);
@@ -75,6 +76,34 @@ class Player{
         File outputFile = new File("AllPlayers.txt");
         PrintWriter printOut = new PrintWriter(new FileWriter(outputFile, true));
         printOut.println(name);
+        printOut.close();
+    }
+    
+    public void delete()throws Exception{
+        File fileToDelete = new File("PlayerData/" + name.replaceAll(" ", "") + ".txt");
+        fileToDelete.delete();
+    }
+    
+    public void deleteFileReference(String playerToDelete)throws Exception{
+        //Setup input file
+        File inFile = new File("AllPlayers.txt");
+        Scanner input = new Scanner(inFile);
+        String newFileContents = "";
+        String line;
+        while(input.hasNext()){
+            line = input.nextLine();
+            if(!line.equals(playerToDelete)){
+                newFileContents += line;
+                newFileContents = newFileContents + "\n";
+            }
+        }
+
+        //delete old file and replace with new one (without the deleted game)
+        input.close();
+        inFile.delete();
+        File outputFile = new File("AllPlayers.txt");
+        PrintWriter printOut = new PrintWriter(outputFile);
+        printOut.println(newFileContents);
         printOut.close();
     }
     

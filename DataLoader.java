@@ -23,8 +23,10 @@ class DataLoader{
         ArrayList<Player> playerList = new ArrayList<Player>();
         while(input.hasNextLine()){
             name = input.nextLine();
-            Player playerToAdd = loadIndividualPlayer(name);
-            playerList.add(playerToAdd);
+            if(name.length()>1){
+                Player playerToAdd = loadIndividualPlayer(name);
+                playerList.add(playerToAdd);
+            }
         }
         input.close();
         return playerList;

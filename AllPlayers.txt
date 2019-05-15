@@ -1,8 +1,6 @@
 John Tavares
 Auston Matthews
-Jonathan Drouin
 William Karlsson
-Zach Hyman
 Ryan Reaves
 Shea Weber
 Joe Pavelski
@@ -16,6 +14,10 @@ Johnathan Toews
 Duncan Keith
 Patrick Kane
 David Pastrnak
-Patrice Bergeron
-Zdeno Chara
-Max Domi
+
+Patrick Laine
+Blake Wheeler
+Kevin Hayes
+
+
+

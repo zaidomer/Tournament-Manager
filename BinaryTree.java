@@ -5,6 +5,10 @@ class BinaryTree<T extends Comparable<T>>{
         root = new BinaryTreeNode<T>(null, null);
     }
     
+    BinaryTree(BinaryTreeNode<T> root){
+        this.root = root;
+    }
+    
     public void add(BinaryTreeNode<T> nodeToAdd){
         boolean nodePlaced = false;
         if(root.getItem() == null){
@@ -32,80 +36,41 @@ class BinaryTree<T extends Comparable<T>>{
         }
     }
     
-    public boolean remove(BinaryTreeNode<T> nodeToRemove){
-        BinaryTreeNode<T> tempBinaryTreeNode = root;
-        BinaryTreeNode<T> parentBinaryTreeNode = root;
-        boolean rightChild = false;
-
-        //Search for node
-        while(tempBinaryTreeNode != nodeToRemove){
-            parentBinaryTreeNode = tempBinaryTreeNode;
-
-            //Node not in tree
-            if(root == null){
-                return false;
-            }
-
-            if((nodeToRemove.getItem()).compareTo(tempBinaryTreeNode.getItem()) < 0){
-                tempBinaryTreeNode = tempBinaryTreeNode.getLeft();
-                rightChild = false;
-            }else{
-                tempBinaryTreeNode = tempBinaryTreeNode.getRight();
-                rightChild = true;
-            }
-        }
-
-        //Leaf
-        if(tempBinaryTreeNode.getLeft() == null && tempBinaryTreeNode.getRight() == null){
-            if(tempBinaryTreeNode == root){
-                root = null;
-            }else if(rightChild == true){
-                parentBinaryTreeNode.setRight(null);
-            }else{
-                parentBinaryTreeNode.setLeft(null);
-            }
-        }
-
-        //No right node
-        else if(tempBinaryTreeNode.getRight() == null){
-            if(tempBinaryTreeNode == root){
-                root = tempBinaryTreeNode.getLeft();
-            }else if(rightChild == true){
-                parentBinaryTreeNode.setLeft(tempBinaryTreeNode.getLeft());
-            }else{
-                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getLeft());
-            }
-        }
-
-        //No left node
-        else if(tempBinaryTreeNode.getLeft() == null){
-            if(tempBinaryTreeNode == root){
-                root = tempBinaryTreeNode.getRight();
-            }else if(rightChild == true){
-                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getRight());
-            }else{
-                parentBinaryTreeNode.setLeft(tempBinaryTreeNode.getRight());
-
-            }
-        }
-
-        //Both left and right node are present
-        else{
-            if(rightChild == true){
-                BinaryTreeNode<T> tempLeftNode = tempBinaryTreeNode.getLeft();
-                parentBinaryTreeNode.setRight(tempBinaryTreeNode.getRight());
-                tempLeftNode
-            }
-        }
-        return true;
-
-    }
-    
-    public boolean isEmpty(BinaryTreeNode<T> node){
-        if(node == null){
+    public boolean remove(BinaryTreeNode<T> parent, BinaryTreeNode<T> nodeToRemove){
+        if(parent.getLeft() != null && parent.getLeft().getItem().equals(nodeToRemove.getItem())){
+            BinaryTreeNode<T> tempNode = parent.getLeft();
+            parent.setLeft(null);
+            addRemovedNodes(tempNode);            
             return true;
+        }else if(parent.getRight() != null && parent.getRight().getItem().equals(nodeToRemove.getItem())){
+            BinaryTreeNode<T> tempNode = parent.getRight();
+            parent.setRight(null);
+            addRemovedNodes(tempNode);
+            return true;
+        }else if((parent.getRight() != null) && (parent.getLeft() != null)){
+            return remove(parent.getRight(), nodeToRemove) || remove(parent.getLeft(), nodeToRemove);
+        }else if(parent.getRight() != null){
+            return remove(parent.getRight(), nodeToRemove);
+        }else if(parent.getLeft() != null){
+            return remove(parent.getLeft(), nodeToRemove);
         }else{
             return false;
+        }
+    }
+    
+    public boolean addRemovedNodes(BinaryTreeNode<T> tempNode){
+        if((tempNode.getRight() != null) && (tempNode.getLeft() != null)){
+            add(tempNode.getRight());
+            add(tempNode.getLeft());
+            return addRemovedNodes(tempNode.getRight()) || addRemovedNodes(tempNode.getLeft());
+        }else if(tempNode.getRight() != null){
+            add(tempNode.getRight());
+            return addRemovedNodes(tempNode.getRight());
+        }else if(tempNode.getLeft() != null){
+            add(tempNode.getLeft());
+            return addRemovedNodes(tempNode.getLeft());
+        }else{
+            return true;
         }
     }
     
