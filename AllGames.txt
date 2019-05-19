@@ -3,7 +3,6 @@
 
 
 
-Washington Capitals Boston Bruins July 6 2019
 
 Boston Bruins San Jose Sharks July 7 2019
 
@@ -27,5 +26,15 @@ Montreal Canadiens Boston Bruins July 16 2019
 
 Toronto Maple Leafs Washington Capitals July 17 2019
 
-Montreal Canadiens San Jose Sharks July 18 2019
-Chicago Blackhawks Vegas Golden Knights July 19 2019
+Montreal Canadiens San Jose Sharks July 18 2019
+
+Chicago Blackhawks Vegas Golden Knights July 19 2019
+
+St Louis Blues Montreal Canadiens July 20 2019
+
+St Louis Blues Toronto Maple Leafs July 21 2019
+Vegas Golden Knights St Louis Blues July 22 2019
+Chicago Blackhawks St Louis Blues July 23 2019
+Washington Capitals St Louis Blues July 24 2019
+San Jose Sharks St Louis Blues July 25 2019
+St Louis Blues Boston Bruins July 26 2019

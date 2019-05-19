@@ -1,13 +1,24 @@
-import java.io.*;
-import java.util.Scanner;
-
+/**
+ * Project - TournamentManager
+ * Queue.java
+ * A File to make the queue
+ * @author Zaid Omer
+ * @version May 12, 2019
+ */
 class Queue<T>{
     private QueueNode<T> root;
 
+    /**
+     * Queue constructor
+     */
     Queue(){
         root = new QueueNode<T>(null);
     }
 
+    /**
+     * adds node to the queue
+     * @param nodeToAdd the node to add to the queue, of type QueueNode<T>
+     */
     public void enqueue(QueueNode<T> nodeToAdd){
         if(root.getItem() == null){
             root = nodeToAdd;
@@ -20,12 +31,20 @@ class Queue<T>{
         }
     }
 
+    /**
+     * removes node from the queue
+     * @return T the item in the node being removed
+     */
     public T dequeue(){
         QueueNode<T> previousRoot = root;
         root = root.getNext();
         return previousRoot.getItem();
     }
 
+    /**
+     * finds the size of the queue
+     * @return int the size calculated
+     */
     public int size(){
         int count = 1;
         QueueNode<T> tempNode = root;

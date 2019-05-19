@@ -2,8 +2,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * Auto Generated Java Class.
+ * Project - TournamentManager
+ * TournamentManager.java
+ * A program used to manage teams in a tournament
+ * @author Zaid Omer
+ * @version May 12 2019
  */
+
 public class TournamentManager {
     public static void main(String[] args) throws Exception{
         Scanner input = new Scanner(System.in);
@@ -17,9 +22,11 @@ public class TournamentManager {
         //Load previous teams information
         DataLoader loadData = new DataLoader();
         league = loadData.loadTeams();
+
         
         //Load previous players Information
         ArrayList<Player> players = loadData.loadPlayers();
+
         for(int i = 0; i < players.size(); i++){
             Player playerRetrieved = new Player((players.get(i)).getName(), (players.get(i)).getGoals(), (players.get(i)).getAssists(), (players.get(i)).getTeam());
             BinaryTreeNode<Integer> playerRetrievedNode = new BinaryTreeNode<Integer>(playerRetrieved.getPoints(), playerRetrieved.getName());
@@ -163,7 +170,6 @@ public class TournamentManager {
                 if(playerFound == false){
                     System.out.println("Player \"" + playerToRemoveName + "\" not found");
                 }else{
-                    System.out.println(playerSearched.getPoints());
                     BinaryTreeNode<Integer> playerToRemoveNode = new BinaryTreeNode<Integer>(playerSearched.getPoints()); 
                     playerTeam.getPlayerList().remove(playerTeam.getPlayerList().getRoot(), playerToRemoveNode);
                     playerSearched.delete();
