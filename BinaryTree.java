@@ -114,7 +114,7 @@ class BinaryTree<T extends Comparable<T>>{
      * @return Boolean true if the node is in the tree, false otherwise
      */
     public boolean containsNodeName(String nodeName, BinaryTreeNode<T> root){
-        if(root.getBinaryTreeNodeName().equals(nodeName)){
+        if(root.getBinaryTreeNodeName()!= null && root.getBinaryTreeNodeName().equals(nodeName)){
             return true;
         }else if((root.getRight() != null) && (root.getLeft() != null)){
             return containsNodeName(nodeName, root.getRight()) || containsNodeName(nodeName, root.getLeft());

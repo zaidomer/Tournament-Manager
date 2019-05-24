@@ -12,7 +12,7 @@ import java.util.ArrayList;
 class DataLoader{
 
     /**
-     * loads all the teams from tect files to an ArrayList
+     * loads all the teams from text files to an ArrayList
      * @return league , the ArrayList of all teams
      * @throws Exception
      */
