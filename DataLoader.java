@@ -13,7 +13,7 @@ class DataLoader{
 
     /**
      * loads all the teams from tect files to an ArrayList
-     * @return league , the ArrayList<Team> of all teams
+     * @return league , the ArrayList of all teams
      * @throws Exception
      */
     public ArrayList<Team> loadTeams()throws Exception{
@@ -31,7 +31,7 @@ class DataLoader{
 
     /**
      * loads all players from text files
-     * @return playerList , an ArrayList<Player> of players
+     * @return playerList , an ArrayList of players
      * @throws Exception
      */
     public ArrayList<Player> loadPlayers()throws Exception{
@@ -87,9 +87,9 @@ class DataLoader{
 
     /**
      * load in all the games upcoming in the schedule
-     * @param league , an ArrayList<Team> of all teams in the league
+     * @param league , an ArrayList of all teams in the league
      * @param display , a boolean variable saying if the user wants to display all the games (true) or not (false)
-     * @return schedule , a Queue<Game> with all the upcoming games
+     * @return schedule , a Queue with all the upcoming games
      * @throws Exception
      */
     public Queue<Game> loadSchedule(ArrayList<Team> league, boolean display)throws Exception{
@@ -112,7 +112,7 @@ class DataLoader{
     /**
      * Loads all the data for 1 game
      * @param gameName the title of the game (i.e. team one vs team two)
-     * @param league , an ArrayList<Team> of all teams in the league
+     * @param league , an ArrayList of all teams in the league
      * @param display , a boolean variable saying if the user wants to display all the games (true) or not (false)
      * @return Game , a game object with the teams playing and the date of the game
      * @throws Exception

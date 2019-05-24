@@ -17,7 +17,7 @@ class Queue<T>{
 
     /**
      * adds node to the queue
-     * @param nodeToAdd the node to add to the queue, of type QueueNode<T>
+     * @param nodeToAdd the node to add to the queue, of type QueueNode
      */
     public void enqueue(QueueNode<T> nodeToAdd){
         if(root.getItem() == null){

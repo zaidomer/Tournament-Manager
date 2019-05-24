@@ -12,7 +12,7 @@ class DataFinder{
     /**
      * Finds the team object, when the team name is given
      * @param teamName String, the name of the team to find
-     * @param league ArrayList<Team> the array list of all the teams in the league
+     * @param league ArrayList the array list of all the teams in the league
      * @return
      */
     public Team findTeam(String teamName, ArrayList<Team> league){

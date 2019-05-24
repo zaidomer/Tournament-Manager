@@ -11,7 +11,7 @@ class QueueNode<T>{
 
     /**
      * QueueNode constructor
-     * @param T item the data to add to the queue node
+     * @param item of type T the data to add to the queue node
      */
     public QueueNode(T item){
         this.item = item;
@@ -21,7 +21,7 @@ class QueueNode<T>{
     /**
      * QueueNode constructor
      * @param item, T type, the data to add to the queue node
-     * @param next, QueueNode<T>, the next node in the queue
+     * @param next, QueueNode, the next node in the queue
      */
     public QueueNode(T item, QueueNode<T> next){
         this.item = item;
@@ -32,7 +32,7 @@ class QueueNode<T>{
 
     /**
      * Next node getter
-     * @return next, the next node of type QueueNode<T>
+     * @return next, the next node of type QueueNode
      */
     public QueueNode<T> getNext(){
         return next;
@@ -50,7 +50,7 @@ class QueueNode<T>{
 
     /**
      * Next node setter
-     * @param next, of type QueueNode<T>
+     * @param next, of type QueueNode
      */
     public void setNext(QueueNode<T> next){
         this.next = next;

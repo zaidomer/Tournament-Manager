@@ -38,7 +38,7 @@ class BinaryTreeNode<T>{
 
     /**
      * Left node getter
-     * @return left, the Node on the left of type BinaryTreeNode<T>
+     * @return left, the Node on the left of type BinaryTreeNode
      */
     public BinaryTreeNode<T> getLeft(){
         return this.left;
@@ -46,7 +46,7 @@ class BinaryTreeNode<T>{
 
     /**
      * Right node getter
-     * @return right, the Node on the right of type BinaryTreeNode<T>
+     * @return right, the Node on the right of type BinaryTreeNode
      */
     public BinaryTreeNode<T> getRight(){
         return this.right;
@@ -73,7 +73,7 @@ class BinaryTreeNode<T>{
 
     /**
      * Left node setter
-     * @param leftItem , the node to the left, of type BinaryTreeNode<T>
+     * @param leftItem , the node to the left, of type BinaryTreeNode
      */
     public void setLeft(BinaryTreeNode<T> leftItem){
         this.left = leftItem;
@@ -81,7 +81,7 @@ class BinaryTreeNode<T>{
 
     /**
      * Right node setter
-     * @param rightItem , the node to the right, of type BinaryTreeNode<T>
+     * @param rightItem , the node to the right, of type BinaryTreeNode
      */
     public void setRight(BinaryTreeNode<T> rightItem){
         this.right = rightItem;

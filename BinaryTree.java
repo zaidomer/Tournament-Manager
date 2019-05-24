@@ -18,7 +18,7 @@ class BinaryTree<T extends Comparable<T>>{
 
     /**
      * BinaryTree Constructor
-     * @param root , root of tree of type BinaryTreeNode<T>
+     * @param root , root of tree of type BinaryTreeNode
      */
     BinaryTree(BinaryTreeNode<T> root){
         this.root = root;
@@ -59,8 +59,8 @@ class BinaryTree<T extends Comparable<T>>{
 
     /**
      * Method to remove nodes from a binary tree
-     * @param parent , the node before the one to be removed, of type BinaryTreeNode<T>
-     * @param nodeToRemove ,the node to get rid of from the tree, of type BinaryTreeNode<T>
+     * @param parent , the node before the one to be removed, of type BinaryTreeNode
+     * @param nodeToRemove ,the node to get rid of from the tree, of type BinaryTreeNode
      * @return Boolean true if item has been removed, false otherwise
      */
     public boolean remove(BinaryTreeNode<T> parent, BinaryTreeNode<T> nodeToRemove){
@@ -110,7 +110,7 @@ class BinaryTree<T extends Comparable<T>>{
      * This checks to ee if the tree has the node with the name specified (the same as contains,
      * but looking at node names is more practical for this progam)
      * @param nodeName , the node which needs to be determined if it's in the tree or not, of type String
-     * @param root , the root of the tree, used for taversing the tree, od type BinaryTreeNode<T>
+     * @param root , the root of the tree, used for taversing the tree, od type BinaryTreeNode
      * @return Boolean true if the node is in the tree, false otherwise
      */
     public boolean containsNodeName(String nodeName, BinaryTreeNode<T> root){
@@ -129,7 +129,7 @@ class BinaryTree<T extends Comparable<T>>{
 
     /**
      * returns the size of a tree
-     * @param root this is the beginning of the tree, of type BinaryTreeNode<T>
+     * @param root this is the beginning of the tree, of type BinaryTreeNode
      * @return int the size of the tree
      */
     public int size(BinaryTreeNode<T> root){
@@ -148,7 +148,7 @@ class BinaryTree<T extends Comparable<T>>{
 
     /**
      * Root getter
-     * @return root , the root of the tree, of type BinaryTreeNode<T>
+     * @return root , the root of the tree, of type BinaryTreeNode
      */
     public BinaryTreeNode<T> getRoot(){
         return root;
@@ -156,7 +156,7 @@ class BinaryTree<T extends Comparable<T>>{
 
     /**
      * Root setter
-     * @param root , the root of the tree, of type BinaryTreeNode<T>
+     * @param root , the root of the tree, of type BinaryTreeNode
      */
     public void setRoot(BinaryTreeNode<T> root){
         this.root = root;

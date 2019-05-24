@@ -34,7 +34,7 @@ class Team{
 
     /**
      * Player List getter
-     * @return playerList, BinaryTree<Integer> variable sorting players based on points
+     * @return playerList, BinaryTree variable sorting players based on points
      */
     public BinaryTree<Integer> getPlayerList(){
         return playerList;
@@ -52,7 +52,7 @@ class Team{
 
     /**
      * player lise setter
-     * @param playerList, BinaryTree<Integer> type, the new binary tree to update to
+     * @param playerList, BinaryTree type, the new binary tree to update to
      */
     public void setPlayerList(BinaryTree<Integer> playerList){
         this.playerList = playerList;
